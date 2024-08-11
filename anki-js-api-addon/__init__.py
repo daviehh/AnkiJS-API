@@ -75,6 +75,12 @@ def on_webview_did_receive_js_message(
 
             elif cmd == "ankiGetCardODid()":
                 ret = mw.reviewer.card.odid
+                
+            elif cmd == "ankiGetFSRS_S()":
+                ret = getattr(mw.reviewer.card.memory_state, 'stability', -1)
+
+            elif cmd == "ankiGetFSRS_D()":
+                ret = getattr(mw.reviewer.card.memory_state, 'difficulty', -1)
 
             elif cmd == "ankiGetNextTime1()" or cmd == "ankiGetNextTime2()" or cmd == "ankiGetNextTime3()" or cmd == "ankiGetNextTime4()":
                 i = int(cmd[len("ankiGetNextTime") :][0])
